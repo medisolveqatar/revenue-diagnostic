@@ -1,47 +1,299 @@
-1️⃣ النص الذي سنضيفه (قصير + طمأنة + Decision-stage)
-html
-Copy code
-<div class="hr"></div>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>تشخيص الإيرادات والعمليات | MediSolve Qatar</title>
+  <meta name="description" content="تشخيص عملي يكشف تسرب الإيرادات والعمليات في العيادات الخاصة بقطر — بدون أنظمة جديدة وبدون مخاطرة." />
 
-<ul style="margin-top:12px">
-  <li><strong>رسالة REVIEW</strong> → تواصل مباشر خلال 24 ساعة</li>
-  <li><strong>مكالمة قصيرة (15–20 دقيقة)</strong> لفهم وضع العيادة</li>
-  <li><strong>تحديد واضح</strong> هل التشخيص مناسب لكم أم لا — بدون أي التزام</li>
-</ul>
-الهدف هنا:
-إزالة الخوف من “ماذا سيحدث بعد الإرسال؟”
-وتحويل الـ CTA من بيع → خطوة آمنة.
+  <!-- Premium Arabic font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
 
-2️⃣ أين تلصقها بالضبط (مهم)
-افتح ملف index.html
-وابحث عن قسم CTA النهائي:
+  <style>
+    :root{
+      /* MediSolve identity */
+      --ms-blue:#0F1F39;
+      --ms-graphite:#2B2B2B;
 
-html
-Copy code
-<section id="final" class="cta">
-ستجد داخله هذا الجزء تقريبًا:
+      /* UI */
+      --bg:#ffffff;
+      --ink:var(--ms-blue);
+      --muted:rgba(43,43,43,.82);
+      --accent:var(--ms-blue);
+      --accent2:#17345f; /* subtle secondary blue */
+      --border:#e5e7eb;
+      --soft:#f8fafc;
+      --soft2:#eef2ff;
+      --shadow: 0 14px 40px rgba(15,31,57,.10);
+      --max: 920px;
+      --pad: 20px;
+      --radius: 18px;
+    }
 
-html
-Copy code
-<a class="btn"
-   href="https://wa.me/97474749336?text=REVIEW%20—%20أرغب%20بمراجعة%20أولية%20لتشخيص%20الإيرادات%20والعمليات">
-  احجز مراجعة أولية
-</a>
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: "IBM Plex Sans Arabic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color:var(--ink);
+      background:var(--bg);
+      line-height:1.75;
+      padding-bottom:86px;
+    }
 
-<div>
-  <a class="link" href="https://wa.me/97474749336?text=REVIEW">
-    أو أرسل كلمة <strong>REVIEW</strong>
-  </a>
-</div>
-⬅️ الصق الكود الجديد مباشرة بعده.
+    .wrap{max-width:var(--max); margin:auto; padding:0 var(--pad)}
+    section{padding:64px 0}
 
-3️⃣ كيف سيظهر بصريًا
-خط صغير نسبيًا (لا ينافس الزر)
+    h1,h2{line-height:1.25; margin:0 0 12px; letter-spacing:-.2px}
+    h1{font-size:clamp(30px,4vw,46px)}
+    h2{font-size:clamp(22px,3vw,30px)}
+    p{margin:10px 0; color:var(--muted); font-size:18px}
+    ul{padding:0 18px; margin:12px 0}
+    li{margin:10px 0; color:var(--muted); font-size:18px}
 
-نقاط واضحة
+    /* Hero surface */
+    .surface{
+      background: linear-gradient(180deg, var(--soft2) 0%, #fff 62%);
+      border-bottom:1px solid var(--border);
+    }
+    .hero{padding-top:78px}
+    .kicker{
+      display:inline-block;
+      color:rgba(15,31,57,.88);
+      font-weight:800;
+      letter-spacing:.2px;
+      margin-bottom:12px;
+      padding:6px 12px;
+      border-radius:999px;
+      background:rgba(15,31,57,.06);
+      border:1px solid rgba(15,31,57,.10);
+    }
 
-يعطي إحساس:
+    /* Cards */
+    .card{
+      background:#fff;
+      border:1px solid var(--border);
+      padding:22px;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
 
-“أنا أعرف بالضبط ما الذي سيحصل”
+    .hr{height:1px; background:var(--border); margin:28px 0}
 
-وهذا مهم جدًا لمالكين ومديرين في قطر.
+    /* CTA button */
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      margin-top:18px;
+      padding:14px 22px;
+      border-radius:14px;
+      background:linear-gradient(135deg,var(--accent) 0%, var(--accent2) 100%);
+      color:#fff;
+      text-decoration:none;
+      font-weight:800;
+      box-shadow: 0 14px 28px rgba(15,31,57,.22);
+      transition: transform .12s ease, box-shadow .12s ease;
+      will-change: transform;
+    }
+    .btn:hover{transform:translateY(-1px); box-shadow: 0 18px 34px rgba(15,31,57,.26)}
+    .link{
+      display:inline-block;
+      margin-top:12px;
+      color:var(--accent);
+      text-decoration:none;
+      font-weight:800;
+    }
+
+    /* Two-column */
+    .grid{display:grid; grid-template-columns:1fr; gap:18px}
+    @media(min-width:820px){ .grid{grid-template-columns:1fr 1fr} }
+
+    /* Final CTA section */
+    .cta{
+      background: linear-gradient(180deg, #ffffff 0%, var(--soft2) 100%);
+      border-top:1px solid var(--border);
+    }
+
+    /* Mobile sticky CTA */
+    .mobile-cta{
+      position:fixed; left:0; right:0; bottom:0;
+      padding:12px 14px;
+      background:rgba(255,255,255,.92);
+      border-top:1px solid var(--border);
+      backdrop-filter: blur(8px);
+      z-index:999;
+    }
+    @media(min-width:820px){ .mobile-cta{display:none} }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="hero surface">
+    <div class="wrap">
+      <div class="kicker">MediSolve — تشخيص الإيرادات والعمليات (قطر)</div>
+
+      <h1>
+        أغلب العيادات في قطر لا تخسر إيراداتها بشكلٍ واضح.<br>
+        <strong>تنزف بصمت.</strong>
+      </h1>
+
+      <p>تشخيص عملي يكشف تسرب الإيرادات والعمليات — بدون أنظمة جديدة، وبدون أي مخاطرة.</p>
+
+      <a class="btn"
+         href="https://wa.me/97474749336?text=REVIEW%20—%20أرغب%20بمراجعة%20أولية%20لتشخيص%20الإيرادات%20والعمليات">
+        احجز مراجعة أولية
+      </a>
+
+      <div>
+        <a class="link" href="#final">أو أرسل كلمة <strong>REVIEW</strong></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section>
+    <div class="wrap">
+      <h2>لماذا لا تظهر المشكلة كأزمة؟</h2>
+      <ul>
+        <li>مطالبات تُتابَع بعد فوات الأوان</li>
+        <li>الاستقبال يفقد فرص تحويل المرضى</li>
+        <li>طاقات الأطباء غير مستغلّة بالكامل</li>
+        <li>ولا توجد مؤشرات واضحة تُطلق إنذارًا</li>
+      </ul>
+      <p><strong style="color:var(--ms-graphite)">الخسارة لا تحدث فجأة. تتراكم بهدوء.</strong></p>
+    </div>
+  </section>
+
+  <!-- MISDIAGNOSIS -->
+  <section>
+    <div class="wrap">
+      <h2>أين يُخطئ أغلب المالكين؟</h2>
+      <ul>
+        <li>“التسويق ضعيف”</li>
+        <li>“شركات التأمين معقّدة”</li>
+        <li>“السوق صعب”</li>
+      </ul>
+      <p>بينما السبب الحقيقي في كثير من الحالات <strong style="color:var(--ms-graphite)">تشغيلي</strong> ويمتد عبر رحلة المريض والتحصيل.</p>
+    </div>
+  </section>
+
+  <!-- TRUTH -->
+  <section>
+    <div class="wrap">
+      <h2>ما الذي نبحث عنه فعليًا؟</h2>
+      <p><strong style="color:var(--ms-graphite)">تسرّب تشغيلي</strong> يبدأ من أول تواصل مع المريض وينتهي عند مرحلة التحصيل.</p>
+      <p>ليس رأيًا، بل نقاط تعطّل قابلة للتحديد والمعالجة.</p>
+    </div>
+  </section>
+
+  <!-- WHAT YOU GET (CARD) -->
+  <section>
+    <div class="wrap">
+      <div class="card">
+        <h2>ماذا يشمل التشخيص؟</h2>
+        <ul>
+          <li>مراجعة مسار المريض من الدخول حتى التحصيل</li>
+          <li>تحديد نقاط التسرب في التحويل والمتابعة</li>
+          <li>قراءة استخدام الطاقات (أطباء / عيادات)</li>
+          <li>خريطة أولويات واضحة قابلة للتنفيذ</li>
+        </ul>
+        <p>بدون تدخل تشغيلي، وبدون تغيير فريقك.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUARANTEE (STRONG CARD) -->
+  <section>
+    <div class="wrap">
+      <div class="card" style="background:linear-gradient(180deg,#ffffff 0%, var(--soft2) 100%); border:1px solid rgba(15,31,57,.18);">
+        <h2>الضمان</h2>
+        <p style="font-size:20px; color:rgba(43,43,43,.92)">
+          <strong>إذا لم نحدد ≥ 5٪ تسربًا قابلًا للاسترجاع، لن تدفع شيئًا.</strong>
+        </p>
+        <p>لا رسوم مخفية. ولا أي التزام لاحق.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO (2 COLUMNS) -->
+  <section>
+    <div class="wrap grid">
+      <div class="card">
+        <h2>مناسب إذا كنت:</h2>
+        <ul>
+          <li>مالكًا أو شريكًا في عيادة أو مجموعة</li>
+          <li>مديرًا عامًا أو طبيًا</li>
+          <li>تشعر أن الإيراد لا يعكس حجم الجهد والاستثمار</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>غير مناسب إذا كنت تبحث عن:</h2>
+        <ul>
+          <li>حملة تسويق</li>
+          <li>نظام جديد</li>
+          <li>وعود سريعة أو حلول عامة</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVAILABILITY -->
+  <section>
+    <div class="wrap">
+      <h2>التوفر</h2>
+      <p>هذا التشخيص متاح <strong style="color:var(--ms-graphite)">بعدد محدود هذا الشهر</strong> لضمان العمق والدقة لكل منشأة.</p>
+    </div>
+  </section>
+
+  <!-- FINAL CTA (CARD) -->
+  <section id="final" class="cta">
+    <div class="wrap">
+      <div class="card">
+        <h2>الخطوة التالية</h2>
+        <p>مراجعة أولية قصيرة لتحديد ما إذا كان التشخيص مناسبًا لك.</p>
+
+        <a class="btn"
+           href="https://wa.me/97474749336?text=REVIEW%20—%20أرغب%20بمراجعة%20أولية%20لتشخيص%20الإيرادات%20والعمليات">
+          احجز مراجعة أولية
+        </a>
+
+        <div>
+          <a class="link" href="https://wa.me/97474749336?text=REVIEW">
+            أو أرسل كلمة <strong>REVIEW</strong>
+          </a>
+        </div>
+
+        <!-- ✅ Added reassurance block -->
+        <div class="hr"></div>
+
+        <ul style="margin-top:12px">
+          <li><strong>رسالة REVIEW</strong> → تواصل مباشر خلال 24 ساعة</li>
+          <li><strong>مكالمة قصيرة (15–20 دقيقة)</strong> لفهم وضع العيادة</li>
+          <li><strong>تحديد واضح</strong> هل التشخيص مناسب لكم أم لا — بدون أي التزام</li>
+        </ul>
+
+      </div>
+    </div>
+  </section>
+
+  <footer style="padding:24px 0; border-top:1px solid var(--border)">
+    <div class="wrap">
+      <p style="margin:0">تشخيص إيرادات وعمليات مخصّص للقطاع الصحي الخاص في قطر والخليج.</p>
+    </div>
+  </footer>
+
+  <!-- Mobile sticky CTA -->
+  <div class="mobile-cta">
+    <a class="btn" style="width:100%; border-radius:16px; margin:0"
+       href="https://wa.me/97474749336?text=REVIEW%20—%20أرغب%20بمراجعة%20أولية%20لتشخيص%20الإيرادات%20والعمليات">
+      احجز مراجعة أولية
+    </a>
+  </div>
+
+</body>
+</html>
